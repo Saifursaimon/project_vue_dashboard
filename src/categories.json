@@ -1,0 +1,65 @@
+[
+    {
+        "id": "all",
+        "name_zh": "全部分类",
+        "name_en": "All Categories",
+        "slug": "all",
+        "icon": "/src/assets/images/all-icon.svg"
+    },
+    {
+        "id": "display",
+        "name_zh": "展示类型",
+        "name_en": "Display Type",
+        "slug": "display-type",
+        "icon": "/src/assets/images/display-icon.svg"
+    },
+    {
+        "id": "ecommerce",
+        "name_zh": "电子商务",
+        "name_en": "E-commerce",
+        "slug": "ecommerce",
+        "icon": "/src/assets/images/business-icon.svg"
+    },
+    {
+        "id": "oa",
+        "name_zh": "OA",
+        "name_en": "Office Automation",
+        "slug": "office-automation",
+        "icon": "/src/assets/images/oa-icon.svg"
+    },
+    {
+        "id": "inventory",
+        "name_zh": "库存管理",
+        "name_en": "Inventory Management",
+        "slug": "inventory-management",
+        "icon": "/src/assets/images/inventory-icon.svg"
+    },
+    {
+        "id": "multi-vendor",
+        "name_zh": "多供应商电子商务",
+        "name_en": "Multi-vendor E-commerce",
+        "slug": "multi-vendor",
+        "icon": "/src/assets/images/E-commerce-icon.svg"
+    },
+    {
+        "id": "services",
+        "name_zh": "服务",
+        "name_en": "Services",
+        "slug": "services",
+        "icon": "/src/assets/images/service-icon.svg"
+    },
+    {
+        "id": "social",
+        "name_zh": "社交媒体",
+        "name_en": "Social Media",
+        "slug": "social-media",
+        "icon": "/src/assets/images/social-icon.svg"
+    },
+    {
+        "id": "others",
+        "name_zh": "其他",
+        "name_en": "Others",
+        "slug": "others",
+        "icon": "/src/assets/images/other-icon.svg"
+    }
+]
