@@ -44,7 +44,7 @@ const handleSubmit = () => {
         return;
     }
 
-    if (props.loginType === "record") {
+    if (props.loginType === "admin" || props.loginType === "Sales Manager" || props.loginType === "Employee") {
         localStorage.setItem("record_pin_verified", "true");
         localStorage.setItem("record_user", JSON.stringify(user));
     }

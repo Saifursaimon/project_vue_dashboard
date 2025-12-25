@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div class=" max-w-360 mx-auto px-7 md:px-10 ">
+  <div class=" max-w-360 mx-auto md:px-10 ">
     <Navbar />
     <RouterView />
   </div>
