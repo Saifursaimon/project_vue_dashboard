@@ -8,17 +8,17 @@ const props = defineProps({
 
 <template>
     <RouterLink :to="`/products/${p.id}`"
-        class="block bg-white transition-all duration-300 hover:scale-[1.01] cursor-pointer">
+        class="block bg-white transition-all duration-300 hover:scale-[1.01] cursor-pointer shadow-sm">
         <div class="relative w-full  bg-[#F9FBFF] px-4 py-3 flex items-end justify-between">
-            <!-- LEFT CONTENT -->
+           
             <div class="flex flex-col hover:scale-[1.01]">
-                <!-- Title -->
+                
                 <h2 class="text-xl font-semibold leading-tight text-[#2da8ff]">
                     分时APP<br />
                     案例
                 </h2>
 
-                <!-- Divider -->
+                
                 <div class="flex items-center gap-1 mt-12">
                     <span class="block w-8 h-0.75 bg-[#2da8ff] rounded-full"></span>
                     <span class="text-[#2da8ff] text-lg font-medium whitespace-nowrap">点刻科技</span>
@@ -33,7 +33,7 @@ const props = defineProps({
 
 
         </div>
-        <div class="p-4">
+        <div class="p-4 bg-[#EDF1FC]">
             <div class="flex items-center justify-between gap-3.5">
                 <p class="font-medium text-lg">{{ p.name.substring(0, 4) }} ...</p>
                 <div

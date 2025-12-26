@@ -44,9 +44,9 @@ const handleSubmit = () => {
         return;
     }
 
-    if (props.loginType === "admin" || props.loginType === "Sales Manager" || props.loginType === "Employee") {
-        localStorage.setItem("record_pin_verified", "true");
-        localStorage.setItem("record_user", JSON.stringify(user));
+    if (props.loginType === "dashboard") {
+        localStorage.setItem("dashboard_pin_verified", "true");
+        localStorage.setItem("dashboard_user", JSON.stringify(user));
     }
 
     emit("success", user);
@@ -59,7 +59,7 @@ const handleCancel = () => {
 </script>
 
 <template>
-    <div class="w-full flex justify-center md:items-center px-4 py-10">
+    <div class="w-full flex justify-center md:items-center px-4 py-10 mt-[50%] md:mt-0">
         <div class="bg-white w-full max-w-md sm:max-w-lg
              p-6 sm:p-12
              rounded-3xl sm:rounded-[59px]
