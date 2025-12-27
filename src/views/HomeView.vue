@@ -9,11 +9,11 @@
                 <div class="flex items-center  gap-2">
                     <div>
                         <el-select v-model="selectedCategory" @change="changeCategory" placeholder="选择分类" clearable
-                            style="margin-bottom: 15px">
+                           class="custom-select">
                             <el-option v-for="cat in categories" :key="cat.id" :label="cat.name_zh" :value="cat.id" />
                         </el-select>
                     </div>
-                    <el-button type="primary" size="large">
+                    <el-button @click="router.push('/create')" type="primary" size="large">
                         <img src="/src/assets/images/add-icon.svg" />
                         创建作品
                     </el-button>
@@ -39,11 +39,11 @@
                     </el-table-column>
 
                     <!-- 操作 -->
-                    <el-table-column label="操作">
+                    <el-table-column label="操作" align="center">
                         <template #default="{ row }">
-                            <el-button type="primary" link>查看</el-button>
-                            <el-button type="warning" link>编辑</el-button>
-                            <el-button type="danger" link @click="handleDelete(row)">
+                            <el-button  link>查看</el-button>
+                            <el-button  link>编辑</el-button>
+                            <el-button  link @click="handleDelete(row)">
                                 删除
                             </el-button>
                         </template>
@@ -65,7 +65,7 @@
                 <div className="w-1 h-5 bg-[#22B4FF]" />
                 <p className="font-semibold text-lg">最近上传</p>
             </div>
-            <div class=" grid grid-cols-1 md:grid-cols-3 gap-5  mt-7">
+            <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  mt-7">
                 <ProductCard v-for="product in products" :key="product.id" :p="product" />
             </div>
         </div>
@@ -78,6 +78,7 @@ import { computed, ref } from 'vue';
 import ProductsData from '/src/products.json'
 import categories from '/src/categories.json'
 import ProductCard from '@/components/ProductCard.vue';
+import { useRouter } from 'vue-router';
 
 
 const PAGE_SIZE = 6
@@ -85,6 +86,7 @@ const PAGE_SIZE = 6
 const tableData = ref(ProductsData)
 const selectedCategory = ref("all")
 const page = ref(1)
+const router = useRouter()
 
 
 
@@ -142,3 +144,18 @@ const products = computed(() => {
 })
 
 </script>
+
+<style scoped>
+.custom-select :deep(.el-select__wrapper) {
+    background-color: #F3F8FE;
+    padding: 8px 16px;
+    width: 145px;
+   
+}
+
+.custom-select :deep(.el-select__selected-item) {
+    background-color: transparent;
+     color: #22B4FF;
+     
+}
+</style>
