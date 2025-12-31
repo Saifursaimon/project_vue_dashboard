@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#F7F8FC] p-5 w-full">
+    <div class="bg-[#F7F8FC] p-5 max-w-full overflow-x-hidden">
         <div class="bg-white p-4 rounded-lg mb-10">
             <div class="flex items-center justify-between mb-7">
                 <div className="flex items-center gap-2">
@@ -19,8 +19,8 @@
                     </el-button>
                 </div>
             </div>
-            <div>
-                <el-table :data="list" style="width: 100%">
+            <div class="overflow-x-hidden">
+                <el-table :data="list" tableLayout="fixed">
                     <el-table-column prop="name" label="产品名称" />
 
                     <el-table-column label="上传时间">
@@ -79,7 +79,7 @@ import ProductsData from '/src/products.json'
 import categories from '/src/categories.json'
 import ProductCard from '@/components/ProductCard.vue';
 import { useRouter } from 'vue-router';
-
+import { ElMessage,ElMessageBox } from 'element-plus';
 
 const PAGE_SIZE = 6
 
@@ -87,6 +87,7 @@ const tableData = ref(ProductsData)
 const selectedCategory = ref("all")
 const page = ref(1)
 const router = useRouter()
+
 
 
 
@@ -150,12 +151,19 @@ const products = computed(() => {
     background-color: #F3F8FE;
     padding: 8px 16px;
     width: 145px;
-   
+
 }
 
 .custom-select :deep(.el-select__selected-item) {
     background-color: transparent;
      color: #22B4FF;
-     
+
 }
+
+:deep(.el-table__cell) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 </style>
