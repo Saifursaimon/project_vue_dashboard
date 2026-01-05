@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
-const props = defineProps({
+ defineProps({
     p: Object
 });
 
@@ -10,15 +10,15 @@ const props = defineProps({
     <RouterLink :to="`/products/${p.id}`"
         class="block bg-white transition-all duration-300 hover:scale-[1.01] cursor-pointer shadow-sm">
         <div class="relative w-full  bg-[#F9FBFF] px-4 py-3 flex items-end justify-between">
-           
+
             <div class="flex flex-col hover:scale-[1.01]">
-                
+
                 <h2 class="text-xl font-semibold leading-tight text-[#2da8ff]">
                     分时APP<br />
                     案例
                 </h2>
 
-                
+
                 <div class="flex items-center gap-1 mt-12">
                     <span class="block w-8 h-0.75 bg-[#2da8ff] rounded-full"></span>
                     <span class="text-[#2da8ff] text-lg font-medium whitespace-nowrap">点刻科技</span>

@@ -7,7 +7,7 @@
 
             <div class="flex items-center gap-2 mb-10">
               <span class="w-1 h-5 bg-[#22B4FF]" />
-              <h1 class="font-semibold text-lg">产品管理</h1>
+              <h1 class="font-semibold text-lg">产品编辑</h1>
             </div>
 
             <form class="space-y-6">
@@ -136,19 +136,22 @@
 
     </div>
     <div class="w-full flex justify-end">
-      <el-button type="primary" size="large" @click="onSubmit">上传</el-button>
+      <el-button type="primary" size="large" @click="onSubmit">更新</el-button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { PencilIcon, Plus, X } from "lucide-vue-next";
 import { ElMessage } from "element-plus";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { toRaw } from "vue";
 
 
 const router = useRouter()
+const route = useRoute()
+const productId = route.params.id
 
 
 /* ---------- form state ---------- */
@@ -167,6 +170,34 @@ const pdfPreviews = ref([]);
 const savedLinks = ref([]);
 const imageInputRef = ref(null)
 const pdfInputRef = ref(null)
+
+
+const fetchProducts = async () => {
+
+  try {
+
+    const res = await fetch(`/api/products/${productId}`)
+    const data = await res.json()
+
+    form.productName = data.name
+    form.productCategory = data.category
+    form.productDescription = data.description
+
+    coverPreview.value = data.thmbnl
+    imagePreviews.value = data.images.map((url) => ({ url, file: null }));
+    pdfPreviews.value = data.documents
+    savedLinks.value = data.contacts
+
+    console.log(data)
+
+
+  }
+  catch (err) {
+    console.log(err, ' failed to fetch product data in edit')
+  }
+
+}
+
 
 const categories = [
   { value: "display", label: "展示类型" },
@@ -195,42 +226,80 @@ const categoryMap = {
 const onSubmit = async () => {
   const formData = new FormData();
 
-  formData.append('name', form.productName);
-  formData.append('categoryId', form.productCategory);
+  /* ---------- BASIC FIELDS ---------- */
+  formData.append("name", form.productName);
+  formData.append("categoryId", form.productCategory);
   formData.append(
-    'category',
-    categoryMap[form.productCategory] || '其他'
+    "category",
+    categoryMap[form.productCategory] || "其他"
   );
-  formData.append('description', form.productDescription);
-  formData.append('date', new Date().toISOString().split('T')[0]);
+  formData.append("description", form.productDescription);
+  formData.append(
+    "date",
+    new Date().toISOString().split("T")[0]
+  );
 
+  /* ---------- COVER ---------- */
   if (form.coverImage) {
-    formData.append('cover', form.coverImage);
+    formData.append("cover", form.coverImage);
   }
 
+  /* ---------- IMAGES ---------- */
+  const existingImages = [];
   imagePreviews.value.forEach((img) => {
-    formData.append('images', img.file);
+    if (img.file) {
+      // new image
+      formData.append("images", img.file);
+    } else if (img.url) {
+      // existing image
+      existingImages.push(img.url);
+    }
   });
 
+  formData.append(
+    "existingImages",
+    JSON.stringify(existingImages)
+  );
+
+  /* ---------- DOCUMENTS ---------- */
+  const existingDocuments = [];
   pdfPreviews.value.forEach((pdf) => {
-    formData.append('documents', pdf.file);
+    if (pdf.file) {
+      formData.append("documents", pdf.file);
+    } else {
+      existingDocuments.push({
+        name: pdf.name,
+        url: pdf.url,
+      });
+    }
   });
 
-  savedLinks.value.forEach((link) => {
-    formData.append('links[]', link);
-  });
+  formData.append(
+    "existingDocuments",
+    JSON.stringify(existingDocuments)
+  );
 
+  /* ---------- CONTACTS ---------- */
+  formData.append(
+    "contacts",
+    JSON.stringify(toRaw(savedLinks.value))
+  );
 
-  const res = await fetch('/api/products', {
-    method: 'POST',
-    body: formData
-  })
+  /* ---------- REQUEST ---------- */
+  const res = await fetch(
+    `/api/products/${productId}`,
+    {
+      method: "PUT",
+      body: formData,
+    }
+  );
 
-if(res.ok){
-ElMessage.success('产品创建成功');
-router.push('/')
-}
+  if (res.ok) {
+    ElMessage.success("产品更新成功");
+    router.push("/");
+  }
 };
+
 
 /* ---------- cover ---------- */
 const handleCoverChange = (e) => {
@@ -284,6 +353,12 @@ const saveLink = () => {
 const removeLink = (idx) => {
   savedLinks.value.splice(idx, 1);
 };
+
+
+onMounted(() => {
+  fetchProducts()
+})
+
 </script>
 
 <style scoped>

@@ -16,13 +16,15 @@ onMounted(() => {
   const verified = localStorage.getItem("dashboard_pin_verified");
   if (verified === "true") {
     authorized.value = true;
+  }else {
+    authorized.value = false
   }
 });
 
 </script>
 
 <template>
-  <PinLogin v-if="!authorized" loginType="dashboard" @success="handleLoginSuccess" />
+  <PinLogin v-if="!authorized" @success="handleLoginSuccess" />
   <div v-else>
     <Navbar />
     <div class="flex items-start">

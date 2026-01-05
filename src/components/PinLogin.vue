@@ -1,21 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import {ElMessage} from 'element-plus'
 
-const props = defineProps({
-    loginType: String
-});
-
-const emit = defineEmits(["success"]);
 const router = useRouter();
-
+const emit = defineEmits(['success'])
 const pin = ref(["", "", "", "", "", ""]);
-
-const USERS = {
-    123456: { id: 1, name: "Admin" },
-    111111: { id: 2, name: "Sales Manager" },
-    222222: { id: 3, name: "Employee" },
-};
 
 const handleChange = (value, index) => {
     if (value.length > 1) return;
@@ -33,23 +23,39 @@ const handleKeyDown = (e, index) => {
     }
 };
 
-const handleSubmit = () => {
+const handleSubmit = async() => {
     const enteredPin = pin.value.join("");
-    const user = USERS[enteredPin];
 
-    if (!user) {
-        alert("密码错误，请重试！");
-        pin.value = ["", "", "", "", "", ""];
-        document.getElementById("pin-0")?.focus();
-        return;
+     try {
+    const res = await fetch('/api/pin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ pin: enteredPin })
+    });
+
+    if (!res.ok) {
+      ElMessage.error('PIN 错误');
+      return;
     }
 
-    if (props.loginType === "dashboard") {
-        localStorage.setItem("dashboard_pin_verified", "true");
-        localStorage.setItem("dashboard_user", JSON.stringify(user));
+    const data = await res.json()
+    const token =  res.headers.get('authorization');
+console.log(data)
+    if (token) {
+      localStorage.setItem("dashboard_user", JSON.stringify(data.user));
+      localStorage.setItem('dashboard_token', token);
+      localStorage.setItem('dashboard_pin_verified', 'true');
+      emit('success')
     }
 
-    emit("success", user);
+  } catch (err) {
+    console.log(err)
+    ElMessage.error('登录失败');
+  }
+
+
 };
 
 const handleCancel = () => {
@@ -69,7 +75,7 @@ const handleCancel = () => {
             <p class="font-medium text-lg sm:text-xl mt-4">请输入密码</p>
 
             <div class="flex gap-2 sm:gap-3 justify-center mt-8 sm:mt-12 mb-6">
-                <input v-for="(digit, i) in pin" :key="i" :id="`pin-${i}`" maxlength="1" :value="digit"
+                <input type="password" v-for="(digit, i) in pin" :key="i" :id="`pin-${i}`" maxlength="1" :value="digit"
                     @input="handleChange($event.target.value, i)" @keydown="handleKeyDown($event, i)" class="w-10 h-12 sm:w-16 sm:h-20
                  border text-center text-lg sm:text-2xl
                  rounded-lg sm:rounded-xl" />
