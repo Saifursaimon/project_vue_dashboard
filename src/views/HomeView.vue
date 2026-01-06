@@ -103,7 +103,7 @@ const categories = ref([
 
 const fetchProducts = async () => {
   try {
-    const res = await fetch('/api/products');
+    const res = await fetch('https://backend-server-o6mn.onrender.com/products');
     const data = await res.json();
     tableData.value = data;
   } catch (err) {
@@ -149,7 +149,7 @@ const handleDelete = async (row) => {
         type: 'warning',
       }
     );
-    const res = await fetch(`/api/products/${row.id}`, {
+    const res = await fetch(`https://backend-server-o6mn.onrender.com/products/${row.id}`, {
       method: 'DELETE',
     });
 

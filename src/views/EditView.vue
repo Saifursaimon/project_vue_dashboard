@@ -176,7 +176,7 @@ const fetchProducts = async () => {
 
   try {
 
-    const res = await fetch(`/api/products/${productId}`)
+    const res = await fetch(`https://backend-server-o6mn.onrender.com/products/${productId}`)
     const data = await res.json()
 
     form.productName = data.name
@@ -287,7 +287,7 @@ const onSubmit = async () => {
 
   /* ---------- REQUEST ---------- */
   const res = await fetch(
-    `/api/products/${productId}`,
+    `https://backend-server-o6mn.onrender.com/products/${productId}`,
     {
       method: "PUT",
       body: formData,

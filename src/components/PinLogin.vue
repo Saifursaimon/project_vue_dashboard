@@ -27,7 +27,7 @@ const handleSubmit = async() => {
     const enteredPin = pin.value.join("");
 
      try {
-    const res = await fetch('/api/pin', {
+    const res = await fetch('https://backend-server-o6mn.onrender.com/pin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

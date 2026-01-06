@@ -221,7 +221,7 @@ const onSubmit = async () => {
   });
 
 
-  const res = await fetch('/api/products', {
+  const res = await fetch('https://backend-server-o6mn.onrender.com/products', {
     method: 'POST',
     body: formData
   })
