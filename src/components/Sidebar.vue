@@ -5,7 +5,7 @@
     >
       <div class="flex items-center gap-5">
         <img
-          src="/src/assets/images/dashboard-icon.svg"
+          src="/images/dashboard-icon.svg"
           alt="dashboard"
           class="w-6 h-6"
         />

@@ -1,7 +1,7 @@
 <script setup>
 
 import { useRouter } from 'vue-router';
-import logo from '/src/assets/images/logo-white.svg'
+import logo from '/images/logo-white.svg'
 
 const router = useRouter()
 
@@ -28,7 +28,7 @@ const handleLogout = () => {
         <p>{{ user?.name || 'Admin' }}</p>
       </div>
       <button @click="handleLogout" class="flex items-center gap-2 hover:bg-gray-100 px-5 py-2">
-        <img src="/src/assets/images/logout.svg" />
+        <img src="/images/logout.svg" />
         退出
       </button>
     </div>

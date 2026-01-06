@@ -14,7 +14,7 @@
             </el-select>
           </div>
           <el-button @click="router.push('/create')" type="primary" size="large">
-            <img src="/src/assets/images/add-icon.svg" />
+            <img src="/images/add-icon.svg" />
             创建作品
           </el-button>
         </div>

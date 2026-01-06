@@ -15,8 +15,8 @@
       <div class="mt-6 space-y-8">
         <div v-for="(img, index) in state.product.images?.length
           ? state.product.images
-          : ['/src/assets/images/image-placeholder.svg']" :key="index" class="relative w-full md:h-161">
-          <img :src="img || '/src/assets/images/image-placeholder.svg'" :alt="state.product.name"
+          : ['/images/image-placeholder.svg']" :key="index" class="relative w-full md:h-161">
+          <img :src="img || '/images/image-placeholder.svg'" :alt="state.product.name"
             class="w-full h-full object-cover" />
         </div>
       </div>
@@ -25,7 +25,7 @@
       <div class="mt-12">
         <div v-for="(d, index) in state.product.documents" :key="index" class="mb-8 flex items-center justify-between">
           <div class="flex items-center gap-11">
-            <img src="/src/assets/images/PDF-icon.svg" alt="pdf" class="w-13 h-13 md:w-23 md:h-23" />
+            <img src="/images/PDF-icon.svg" alt="pdf" class="w-13 h-13 md:w-23 md:h-23" />
             <p class="font-medium text-lg">{{ d.name }}</p>
           </div>
 

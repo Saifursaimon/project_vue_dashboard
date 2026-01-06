@@ -97,7 +97,7 @@
                 <div class="mt-4 space-y-2">
                   <div v-for="(pdf, i) in pdfPreviews" :key="i" class="flex items-center gap-30">
                     <div class="flex items-center gap-3 w-1/2">
-                      <img src="/src/assets/images/PDF-icon.svg" class="h-15 w-15" />
+                      <img src="/images/PDF-icon.svg" class="h-15 w-15" />
                       <p class="font-medium">{{ pdf.name }}</p>
                     </div>
                     <button @click="removePdf(i)" type="button" class=" bg-[#C1C7D0] rounded-full p-1 ">

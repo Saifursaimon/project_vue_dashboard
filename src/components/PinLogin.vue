@@ -70,7 +70,7 @@ const handleCancel = () => {
              p-6 sm:p-12
              rounded-3xl sm:rounded-[59px]
              shadow-md flex flex-col items-center">
-            <img src="/src/assets/images/unlock-icon.svg" class="w-20 h-20 sm:w-32 sm:h-32" />
+            <img src="/images/unlock-icon.svg" class="w-20 h-20 sm:w-32 sm:h-32" />
 
             <p class="font-medium text-lg sm:text-xl mt-4">请输入密码</p>
 
