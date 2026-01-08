@@ -2,7 +2,7 @@
   <div class="bg-[#F7F8FC] p-5 w-full">
     <div class="bg-white p-4 rounded-lg mb-5">
       <div>
-        <div class="bg-white m-4 rounded-lg p-8">
+        <div class="bg-white m-4 rounded-lg md:p-8">
           <div class="max-w-4xl mx-auto">
 
             <div class="flex items-center gap-2 mb-10">
