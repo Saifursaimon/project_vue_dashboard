@@ -220,6 +220,7 @@ const onSubmit = async () => {
     formData.append('links[]', link);
   });
 
+  console.log(formData)
 
   const res = await fetch('https://backend-server-o6mn.onrender.com/products', {
     method: 'POST',

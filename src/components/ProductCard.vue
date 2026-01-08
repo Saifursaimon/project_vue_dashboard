@@ -27,7 +27,7 @@ import { RouterLink } from "vue-router";
 
             <!-- RIGHT IMAGE -->
             <div>
-                <img src="@/assets/images/app-card.svg" alt="app preview" class="w-20 h-20" />
+                <img src="/images/app-card.svg" alt="app preview" class="w-20 h-20" />
             </div>
 
 
