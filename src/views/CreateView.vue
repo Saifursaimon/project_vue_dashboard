@@ -118,7 +118,7 @@
                       <X class="h-4 w-4" />
                     </button>
                   </div>
-                  <div class="flex gap-4">
+                  <div class="flex gap-4 mb-5 md:mb-2">
                     <el-input v-model="form.linksInput" placeholder="请输入或粘贴你要上传的链接" class="custom-input" />
                     <el-button type="primary" size="large" @click="saveLink" class="px-6 py-2">
                       保存
