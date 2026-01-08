@@ -2,10 +2,10 @@
   <div class="bg-[#F7F8FC] p-5 max-w-full overflow-x-hidden">
     <!-- PRODUCTS TABLE -->
     <div class="bg-white p-4 rounded-lg mb-10">
-      <div class="flex items-center justify-between mb-7">
+      <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-0 justify-between mb-7">
         <div class="flex items-center gap-2">
           <div class="w-1 h-5 bg-[#22B4FF]" />
-          <p class="font-semibold text-lg">产品管理</p>
+          <p class="font-semibold text-lg whitespace-nowrap">产品管理</p>
         </div>
 
        <div class="flex items-center  gap-2">

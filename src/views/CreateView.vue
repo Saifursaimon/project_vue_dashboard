@@ -12,14 +12,14 @@
 
             <form class="space-y-6">
 
-              <div class="flex justify-between gap-30">
+              <div class="flex items-center justify-between gap-10 md:gap-30">
                 <div class="flex-1 flex gap-4">
-                  <label class="whitespace-nowrap font-medium">*产品名称</label>
-                  <el-input v-model="form.productName" placeholder="请输入作品名称" />
+                  <label class="whitespace-nowrap font-medium hidden md:flex">*产品名称</label>
+                  <el-input v-model="form.productName" class="" placeholder="请输入作品名称" />
                 </div>
 
                 <div class="flex-1 flex gap-4">
-                  <label class="whitespace-nowrap font-medium">*产品分类</label>
+                  <label class="whitespace-nowrap font-medium hidden md:flex">*产品分类</label>
                   <el-select v-model="form.productCategory" placeholder="请选择作品分类">
                     <el-option v-for="item in categories" :key="item.value" :label="item.label" :value="item.value" />
                   </el-select>
@@ -27,7 +27,7 @@
               </div>
 
 
-              <div class="flex gap-4 mt-7">
+              <div class="flex flex-col md:flex-row gap-4 mt-7">
                 <label class="pt-2 whitespace-nowrap font-medium">*产品描述</label>
                 <el-input type="textarea" v-model="form.productDescription" rows="5" />
               </div>
@@ -36,7 +36,7 @@
               <div>
                 <label class="block mb-3 font-medium">上传封面</label>
 
-                <div class="relative w-1/3 aspect-4/3 border rounded-lg overflow-hidden">
+                <div class="relative md:w-1/3 aspect-4/3 border rounded-lg overflow-hidden">
                   <input id="cover" type="file" hidden accept="image/*" @change="handleCoverChange" />
 
                   <template v-if="coverPreview">
@@ -59,8 +59,8 @@
               </div>
 
               <div class="mt-8">
-                <div class="flex gap-4 items-center mb-8">
-                  <p class="font-medium">上传图片</p>
+                <div class="flex gap-4 items-start md:items-center mb-8">
+                  <p class="font-medium whitespace-nowrap">上传图片</p>
                   <p class="text-[#636363]">单个文件最大支持10M，支持jpg\png</p>
                 </div>
 
@@ -98,7 +98,7 @@
                   <div v-for="(pdf, i) in pdfPreviews" :key="i" class="flex items-center gap-30">
                     <div class="flex items-center gap-3 w-1/2">
                       <img src="/images/PDF-icon.svg" class="h-15 w-15" />
-                      <p class="font-medium">{{ pdf.name }}</p>
+                      <p class="font-medium whitespace-break-spaces">{{ pdf.name }}</p>
                     </div>
                     <button @click="removePdf(i)" type="button" class=" bg-[#C1C7D0] rounded-full p-1 ">
                       <X class="h-4 w-4 text-gray-500" />
@@ -112,7 +112,7 @@
               <div class="mt-8">
                 <label class="pt-2 whitespace-nowrap font-medium ">上传链接</label>
                 <div class="my-3 space-y-1">
-                  <div v-for="(l, i) in savedLinks" :key="i" class="flex items-center gap-30 w-1/3 mb-5">
+                  <div v-for="(l, i) in savedLinks" :key="i" class="flex items-center gap-30 md:w-1/3 mb-5">
                     <p class="font-medium w-1/2 overflow-hidden">{{ l }}</p>
                     <button @click="removeLink(i)" type="button" class="bg-[#C1C7D0] rounded-full p-1">
                       <X class="h-4 w-4" />
@@ -135,7 +135,7 @@
       </div>
 
     </div>
-    <div class="w-full flex justify-end">
+    <div class="w-full flex justify-center md:justify-end">
       <el-button type="primary" size="large" @click="onSubmit">上传</el-button>
     </div>
   </div>

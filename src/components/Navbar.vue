@@ -2,7 +2,7 @@
 
 import { useRouter } from 'vue-router';
 import logo from '/images/logo-white.svg'
-
+import { RouterLink } from 'vue-router';
 const router = useRouter()
 
 const user = JSON.parse(localStorage.getItem('dashboard_user'))
@@ -18,7 +18,7 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <div class="py-10 flex items-center relative bg-white">
+  <RouterLink to="/" class="py-10 flex items-center relative bg-white">
     <div class="bg-[#22B4FF] px-4 md:p-4 absolute top-0">
       <img :src="logo" alt="Logo" class="h-20 w-20 md:w-51.75 md:h-8.25" />
     </div>
@@ -32,5 +32,5 @@ const handleLogout = () => {
         退出
       </button>
     </div>
-  </div>
+  </RouterLink>
 </template>
