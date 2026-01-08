@@ -38,8 +38,9 @@
         </el-table-column>
 
         <el-table-column label="操作" align="center">
-          <template #default="{ row }">
-            <RouterLink :to="`/products/${row.id}`">
+          <template  #default="{ row }">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2">
+              <RouterLink :to="`/products/${row.id}`">
               <el-button link>查看</el-button>
             </RouterLink>
 
@@ -48,6 +49,7 @@
             </RouterLink>
 
             <el-button link @click="handleDelete(row)">删除</el-button>
+            </div>
           </template>
         </el-table-column>
       </el-table>

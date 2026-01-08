@@ -135,7 +135,7 @@
       </div>
 
     </div>
-    <div class="w-full flex justify-center md:justify-end">
+    <div class="w-full flex justify-center mb-5 md:justify-end">
       <el-button type="primary" size="large" @click="onSubmit">上传</el-button>
     </div>
   </div>
