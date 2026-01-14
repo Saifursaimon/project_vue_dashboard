@@ -111,21 +111,29 @@
 
               <div class="mt-8">
                 <label class="pt-2 whitespace-nowrap font-medium ">上传链接</label>
-                <div class="my-3 space-y-1">
-                  <div v-for="(l, i) in savedLinks" :key="i" class="flex items-center gap-30 md:w-1/3 mb-5">
-                    <p class="font-medium w-1/2 overflow-hidden">{{ l }}</p>
+               <div class="my-3 space-y-2">
+                  <div v-for="(link, i) in savedLinks" :key="i" class="flex items-center gap-3 md:w-1/3 mb-5">
+                    <!-- Link URL display -->
+                    <p class="font-medium w-1/2 overflow-hidden">{{ link.url }}</p>
+
+                    <!-- Remove button -->
                     <button @click="removeLink(i)" type="button" class="bg-[#C1C7D0] rounded-full p-1">
-                      <X class="h-4 w-4" />
+                      <X class="h-4 w-4 text-gray-500" />
                     </button>
+
+
+                    <!-- Textbox for link name -->
+                    <el-input v-model="link.name"  placeholder="请输入链接名称" class="flex-1" />
+
                   </div>
+
+                  <!-- Input to add new link -->
                   <div class="flex gap-4 mb-5 md:mb-2">
                     <el-input v-model="form.linksInput" placeholder="请输入或粘贴你要上传的链接" class="custom-input" />
                     <el-button type="primary" size="large" @click="saveLink" class="px-6 py-2">
                       保存
                     </el-button>
                   </div>
-
-
                 </div>
               </div>
             </form>
@@ -346,7 +354,7 @@ const removePdf = (idx) => {
 /* ---------- links ---------- */
 const saveLink = () => {
   if (!form.linksInput) return;
-  savedLinks.value.push(form.linksInput);
+  savedLinks.value.push({ url: form.linksInput, name: '' });
   form.linksInput = "";
 };
 

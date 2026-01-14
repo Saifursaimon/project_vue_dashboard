@@ -40,9 +40,9 @@
       <div class=" mt-12 flex items-start gap-10">
         <p class="font-medium text-lg">链接地址:</p>
         <div class="flex flex-col gap-6">
-          <a v-for="(c, i) in state.product.contacts" :key="i" :href="c.startsWith('http') ? c : `https://${c}`"
+          <a v-for="(c, i) in state.product.contacts" :key="i" :href="c ? `https://${c.url} `: '#'"
             target="blank" class=" text-lg underline underline-offset-6 decoration-2 decoration-[#2368F0]">
-            {{ c }}
+            {{ c.name? c.name: c.url  }}
           </a>
         </div>
       </div>
