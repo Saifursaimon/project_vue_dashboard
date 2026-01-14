@@ -20,7 +20,8 @@ defineProps({
         :class="!p.thmbnl ? 'bg-[#F9FBFF] hover:bg-[#f0f0f1]' : ''">
         <!-- LEFT CONTENT -->
         <div class="flex flex-col hover:scale-[1.01]">
-          <h2 class="text-xl absolute top-5 font-semibold leading-tight text-[#2da8ff]">
+         <h2
+            :class="`text-xl absolute top-5 font-semibold leading-tight ${p.thmbnl ? 'text-white' : 'text-[#2da8ff]'} `">
             {{ p.name }}
           </h2>
         </div>
